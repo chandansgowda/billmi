@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "138900610893",
+    "firebase_url": "https://billmi-default-rtdb.firebaseio.com",
+    "project_id": "billmi",
+    "storage_bucket": "billmi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138900610893:android:963de9f90803336a02e104",
+        "android_client_info": {
+          "package_name": "com.odetocode.billmi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138900610893-s0skghkjrudn7nbtos9so8uomlihm5mq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaW3vJzIeEW-DRpKoWT4MMw8aQty69Fgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138900610893-s0skghkjrudn7nbtos9so8uomlihm5mq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
