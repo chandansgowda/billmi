@@ -100,7 +100,7 @@ class _PreviousOrderDetailsScreenState extends State<PreviousOrderDetailsScreen>
                             children: [
                               Text("Address",style: TextStyle(fontSize: 30)),
                               Divider(thickness: 1,),
-                              Text("${previousOrderItem.cAddress}",style: TextStyle(fontSize: 25)),
+                              Text("${previousOrderItem.cAddress}",style: TextStyle(fontSize: 25), textAlign: TextAlign.center),
                             ],
                           ),
                         ),

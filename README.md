@@ -21,4 +21,3 @@
 
 ## Know Issues
 1. App is not yet fully responsive, please adjust the screen size accordingly.
-2. SendInBlue Email API takes more time to send order email sometimes
