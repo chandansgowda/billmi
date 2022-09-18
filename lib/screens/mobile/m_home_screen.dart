@@ -1,18 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:billmi/providers/products.dart';
-import 'package:billmi/screens/mobile/customer_details_input_screen.dart';
-import 'package:billmi/screens/mobile/inventory_screen.dart';
-import 'package:billmi/screens/mobile/preview_order_screen.dart';
-import 'package:billmi/screens/mobile/previous_orders_screen.dart';
-import 'package:billmi/screens/mobile/support_screen.dart';
-import 'package:billmi/screens/mobile/widgets/home_screen_card.dart';
-import 'package:billmi/services/firebase_auth_services.dart';
-import 'package:billmi/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/orders.dart';
+import '../../providers/products.dart';
 import '../../providers/user.dart';
+import '../../services/firebase_auth_services.dart';
+import '../../utils/colors.dart';
+import 'customer_details_input_screen.dart';
+import 'inventory_screen.dart';
+import 'previous_orders_screen.dart';
+import 'support_screen.dart';
+import 'widgets/home_screen_card.dart';
 
 class MHomeScreen extends StatefulWidget {
   static const routeName = '/m-home-screen';
@@ -64,7 +63,7 @@ class _MHomeScreenState extends State<MHomeScreen> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             Container(
@@ -73,93 +72,99 @@ class _MHomeScreenState extends State<MHomeScreen> {
                 color: kPrimaryColour,
               ),
               width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.25,
+              height: MediaQuery.of(context).size.height * 0.255,
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding:EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*0.02,horizontal: MediaQuery.of(context).size.width*0.06),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "$storeName",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 30,),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "Cat: $storeType",
-                          style: TextStyle(
-                              color: Colors.white.withOpacity(0.75),
-                              fontSize: 23),
-                        ),
-                      ],
+                    MediaQuery(
+                      data: MediaQueryData(textScaleFactor: 1.25),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "$storeName",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white, fontSize: 22,),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height*0.02,
+                          ),
+                          Text(
+                            "Cat: $storeType",
+                            style: TextStyle(
+                                color: Colors.white.withOpacity(0.75),
+                                fontSize: 18),
+                          ),
+                        ],
+                      ),
                     ),
                     Divider(
                       thickness: 2,
                       color: Colors.white70,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "${Provider.of<UserProvider>(context, listen: false).id}",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            signOut();
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.exit_to_app,
-                                size: 28,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "Logout",
-                                style: TextStyle(
-                                    fontSize: 18, color: Colors.white),
-                              ),
-                            ],
+                    MediaQuery(
+                      data: MediaQueryData(textScaleFactor: 1.05),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "${Provider.of<UserProvider>(context, listen: false).id}",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
-                        ),
-                      ],
+                          GestureDetector(
+                            onTap: () {
+                              signOut();
+                            },
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.exit_to_app,
+                                  size: 28,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "Logout",
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),
               ),
             ),
-            Container(
+            Expanded(
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           Navigator.of(context)
                               .pushNamed(CustomerDetailsInputScreen.routeName);
                         },
-                        child: MHomeScreenCard(
+                        child: HomeScreenCard(
                           icon: Icons.add_shopping_cart_rounded,
                           text: "New Order",
                         ),
                       ),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           Navigator.of(context)
                               .pushNamed(InventoryScreen.routeName);
                         },
-                        child: MHomeScreenCard(
+                        child: HomeScreenCard(
                           icon: Icons.inventory_2_outlined,
                           text: "Inventory",
                         ),
@@ -169,11 +174,11 @@ class _MHomeScreenState extends State<MHomeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           Navigator.of(context).pushNamed(PreviousOrdersScreen.routeName);
                         },
-                        child: MHomeScreenCard(
+                        child: HomeScreenCard(
                           icon: Icons.history,
                           text: "History",
                         ),
@@ -182,7 +187,7 @@ class _MHomeScreenState extends State<MHomeScreen> {
                         onTap: (){
                           Navigator.of(context).push(MaterialPageRoute(builder: (_)=> SupportScreen()));
                         },
-                        child: MHomeScreenCard(
+                        child: HomeScreenCard(
                           icon: Icons.support_agent,
                           text: "Support",
                         ),
