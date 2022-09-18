@@ -1,3 +1,4 @@
+import 'package:billmi/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tawk/flutter_tawk.dart';
 import 'package:billmi/providers/user.dart';
@@ -10,7 +11,8 @@ class SupportScreen extends StatelessWidget {
     final user = Provider.of<UserProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Technical Support"),
+        title: Text("Technical Support", style: TextStyle(color: Colors.white),),
+        backgroundColor: kPrimaryColour,
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 25, top: 25, bottom: 40, right: 25),

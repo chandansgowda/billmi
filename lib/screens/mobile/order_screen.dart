@@ -160,7 +160,7 @@ class _OrderScreenState extends State<OrderScreen> {
               Container(
                 color: Colors.transparent,
                 width: double.infinity,
-                height: 500,
+                height: 600,
                 child: Padding(
                     padding: const EdgeInsets.only(top: 8),
                     child: ListView.builder(

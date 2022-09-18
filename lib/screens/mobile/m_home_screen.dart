@@ -144,57 +144,59 @@ class _MHomeScreenState extends State<MHomeScreen> {
               ),
             ),
             Expanded(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(CustomerDetailsInputScreen.routeName);
-                        },
-                        child: HomeScreenCard(
-                          icon: Icons.add_shopping_cart_rounded,
-                          text: "New Order",
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(CustomerDetailsInputScreen.routeName);
+                          },
+                          child: HomeScreenCard(
+                            icon: Icons.add_shopping_cart_rounded,
+                            text: "New Order",
+                          ),
                         ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(InventoryScreen.routeName);
-                        },
-                        child: HomeScreenCard(
-                          icon: Icons.inventory_2_outlined,
-                          text: "Inventory",
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(InventoryScreen.routeName);
+                          },
+                          child: HomeScreenCard(
+                            icon: Icons.inventory_2_outlined,
+                            text: "Inventory",
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushNamed(PreviousOrdersScreen.routeName);
-                        },
-                        child: HomeScreenCard(
-                          icon: Icons.history,
-                          text: "History",
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(PreviousOrdersScreen.routeName);
+                          },
+                          child: HomeScreenCard(
+                            icon: Icons.history,
+                            text: "History",
+                          ),
                         ),
-                      ),
-                      InkWell(
-                        onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=> SupportScreen()));
-                        },
-                        child: HomeScreenCard(
-                          icon: Icons.support_agent,
-                          text: "Support",
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (_)=> SupportScreen()));
+                          },
+                          child: HomeScreenCard(
+                            icon: Icons.support_agent,
+                            text: "Support",
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             )
           ],
